@@ -7,7 +7,8 @@ class SubCanvas {
         .css({
             position:'absolute',
             top:0,
-            left:0
+            left:0,
+            'z-index':-99999
         })
         $('body').prepend(this.canvas_jq)
         this.canvas = document.getElementById(subcanvas_id)
@@ -32,7 +33,13 @@ class SubCanvas {
         setInterval(function(){
             tthis.ctx.canvas.width  = window.innerWidth;
             tthis.ctx.canvas.height = window.innerHeight;
-            tthis.update_method.call(tthis)
+            try {
+                tthis.update_method.call(tthis)
+            } catch(e) {
+                console.error('updated method error')
+                console.error(e)
+                tthis.set_update_method(null)
+            }
         },12)
     }
 
