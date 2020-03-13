@@ -3,13 +3,20 @@
 class SubCanvas {
 
     constructor(subcanvas_id='SubCanvas') {
-        this.canvas = document.getElementById(subcanvas_id)
-        this.ctx = this.canvas.getContext("2d")
+        this.setup_canvas()
 
         this.update_method = function() {}
 
         this.__launch_updater()
         this.update_method()
+    }
+    
+    setup_canvas() {
+        this.canvas = document.getElementById(subcanvas_id)
+        this.ctx = null
+        if(this.canvas != null) {
+            this.canvas.getContext("2d")
+        }
     }
 
     // ------------------------------------------------------
@@ -23,6 +30,9 @@ class SubCanvas {
     __launch_updater() {
         let tthis = this
         setInterval(function(){
+            if(tthis.canvas == null) {
+                tthis.setup_canvas()
+            }
             tthis.ctx.canvas.width  = window.innerWidth;
             tthis.ctx.canvas.height = window.innerHeight;
             try {
