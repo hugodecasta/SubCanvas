@@ -32,7 +32,7 @@ class SubCanvas {
         let tthis = this
         setInterval(function(){
             if(tthis.canvas == null) {
-                tthis.setup_canvas()
+                tthis.setup_canvas.call(tthis)
             }
             tthis.ctx.canvas.width  = window.innerWidth;
             tthis.ctx.canvas.height = window.innerHeight;
