@@ -3,14 +3,6 @@
 class SubCanvas {
 
     constructor(subcanvas_id='SubCanvas') {
-        this.canvas_jq = $('<canvas>').attr('id',subcanvas_id)
-        .css({
-            position:'absolute',
-            top:0,
-            left:0,
-            'z-index':-99999
-        })
-        $('body').prepend(this.canvas_jq)
         this.canvas = document.getElementById(subcanvas_id)
         this.ctx = this.canvas.getContext("2d")
 
