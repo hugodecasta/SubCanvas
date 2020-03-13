@@ -3,6 +3,7 @@
 class SubCanvas {
 
     constructor(subcanvas_id='SubCanvas') {
+        this.subcanvas_id = subcanvas_id
         this.setup_canvas()
 
         this.update_method = function() {}
@@ -12,7 +13,7 @@ class SubCanvas {
     }
     
     setup_canvas() {
-        this.canvas = document.getElementById(subcanvas_id)
+        this.canvas = document.getElementById(this.subcanvas_id)
         this.ctx = null
         if(this.canvas != null) {
             this.canvas.getContext("2d")
